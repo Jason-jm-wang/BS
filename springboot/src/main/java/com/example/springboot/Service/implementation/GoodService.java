@@ -31,9 +31,8 @@ public class GoodService implements IGoodService {
 
     @Override
     public List<Good> getAllGoods() {
-        System.out.println("success select all goods");
-        return goodsMapper.selectAllGoods();
 
+        return goodsMapper.selectAllGoods();
     }
 
     @Override
@@ -42,8 +41,8 @@ public class GoodService implements IGoodService {
     }
 
     @Override
-    public List<Good> getGoodsByCategory(String category) {
-        return goodsMapper.selectGoodsByCategory(category);
+    public List<Good> getGoodsByCategory(String category1, String category2) {
+        return goodsMapper.selectGoodsByCategory(category1, category2);
     }
 
     @Override

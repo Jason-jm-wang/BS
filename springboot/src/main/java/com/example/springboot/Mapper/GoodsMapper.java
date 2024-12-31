@@ -21,7 +21,7 @@ public interface GoodsMapper {
 
     List<Good> selectGoodsByName(String s);
 
-    List<Good> selectGoodsByCategory(String category);
+    List<Good> selectGoodsByCategory(String category1, String category2);
 
     void deleteGoodById(int id);
 }

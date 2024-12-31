@@ -6,8 +6,8 @@
 
     <!-- 插入商品信息 -->
     <insert id="insertGood">
-        insert into good(name, price, description, image, category, platform, url)
-        values(#{name}, #{price}, #{description}, #{image}, #{category}, #{platform}, #{url})
+        insert into good(name, price, description, image, category1, category2, platform, url, samegoodid)
+        values(#{name}, #{price}, #{description}, #{image}, #{category1}, #{category2}, #{platform}, #{url}, #{samegoodid})
     </insert>
 
     <!-- 更新商品信息 -->
@@ -17,25 +17,31 @@
             price = #{price},
             description = #{description},
             image = #{image},
-            category = #{category},
+            category1 = #{category1},
+            category2 = #{category2},
             platform = #{platform},
-            url = #{url}
+            url = #{url},
+            samegoodid = #{samegoodid}
         where id = #{id}
     </update>
 
     <!-- 根据商品 ID 查询 -->
     <select id="selectGoodById" resultType="com.example.springboot.entity.Good">
-        select * from good where id = #{id}
+        select id, name, price, description, image, category1, category2, platform, url, samegoodid
+        from good
+        where id = #{id}
     </select>
 
     <!-- 查询所有商品 -->
     <select id="selectAllGoods" resultType="com.example.springboot.entity.Good">
-        select * from good
+        select id, name, price, description, image, category1, category2, platform, url, samegoodid
+        from good
     </select>
 
     <!-- 根据商品名称模糊搜索 -->
     <select id="selectGoodsByName" resultType="com.example.springboot.entity.Good">
-        select * from good
+        select id, name, price, description, image, category1, category2, platform, url, samegoodid
+        from good
         <where>
             <if test="s != null and s != ''">
                 name like concat('%', #{s}, '%')
@@ -45,10 +51,14 @@
 
     <!-- 根据商品分类查询 -->
     <select id="selectGoodsByCategory" resultType="com.example.springboot.entity.Good">
-        select * from good
+        select id, name, price, description, image, category1, category2, platform, url, samegoodid
+        from good
         <where>
-            <if test="category != null and category != ''">
-                category = #{category}
+            <if test="category1 != null and category1 != ''">
+                category1 = #{category1}
+            </if>
+            <if test="category2 != null and category2 != ''">
+                and category2 = #{category2}
             </if>
         </where>
     </select>

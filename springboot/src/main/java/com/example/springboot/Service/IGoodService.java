@@ -39,10 +39,10 @@ public interface IGoodService {
     /**
      * 根据分类查询商品
      *
-     * @param category 分类名称
+     * @param category1 分类名称1 category2 分类名称2
      * @return 商品列表
      */
-    List<Good> getGoodsByCategory(String category);
+    List<Good> getGoodsByCategory(String category1, String category2);
 
     /**
      * 删除商品

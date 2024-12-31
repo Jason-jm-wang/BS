@@ -60,8 +60,8 @@ public class GoodController {
      * 根据分类获取商品
      */
     @GetMapping("/category")
-    public Result getByCategory(@RequestParam String category) {
-        List<Good> goods = goodService.getGoodsByCategory(category);
+    public Result getByCategory(@RequestParam String category1, String category2) {
+        List<Good> goods = goodService.getGoodsByCategory(category1, category2);
         return Result.success(goods);
     }
 
